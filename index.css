@@ -1,0 +1,283 @@
+/* Projeto prático: Site Completo com HTML e CSS - Parte 1 */
+
+/* 1- Normalização */
+
+* {
+  box-sizing: border-box;
+  /* Ah, a propriedade box-sizing: border-box no CSS! É uma propriedade muito útil que afeta o modelo de caixa dos elementos HTML.
+
+  Quando você define box-sizing: border-box em um elemento, o tamanho total do elemento é calculado levando em consideração a largura e altura definidas, juntamente com as bordas e o preenchimento (padding). Isso significa que o tamanho total do elemento inclui as bordas e o preenchimento, e o conteúdo é dimensionado para se ajustar dentro desse espaço.
+  
+  Essa propriedade é especialmente útil quando você está trabalhando com layouts responsivos, pois permite que você defina a largura e altura de um elemento de forma mais precisa, sem se preocupar com o impacto das bordas e do preenchimento no tamanho total.
+  
+  Por exemplo, se você tiver um elemento com width: 200px e padding: 20px, o tamanho total do elemento será de 240 pixels se você não usar box-sizing: border-box. No entanto, se você usar box-sizing: border-box, o tamanho total do elemento será de 200 pixels, e o conteúdo será dimensionado para se ajustar dentro desse espaço.
+  
+  É uma propriedade muito útil para evitar problemas de layout e garantir que os elementos se comportem como o esperado. */
+  font-family: "Oxygen", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2- Definindo Variáveis */
+
+:root {
+  --color-background: #030207;
+  --color-white: #fff;
+  --color-blue: #1474b4;
+}
+
+/* 3- Elementos Gerais / Genéricos / Links */
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-white);
+}
+
+a {
+  color: var(--color-blue);
+}
+
+/* 4- Sessões */
+
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.1) var(--color-background));
+  position: relative; /* relative: Com position: relative, você pode posicionar um elemento em relação à sua posição normal. Você pode usar as propriedades top, right, bottom e left para ajustar a posição do elemento em relação à sua posição normal.*/
+
+  min-height: 100vh; /* Altura mínima */
+}
+
+.hero__background {
+  object-fit: cover; /* Essa é uma propriedade interessante do CSS que permite controlar como uma imagem ou vídeo é exibido dentro de um elemento.
+
+  Quando você define object-fit: cover em um elemento que contém uma imagem ou vídeo, ele faz com que o conteúdo seja redimensionado para preencher completamente o elemento, mantendo a proporção original. Isso significa que o conteúdo será dimensionado para cobrir todo o espaço disponível, podendo cortar partes da imagem ou vídeo se necessário.
+  
+  Essa propriedade é útil quando você deseja garantir que o conteúdo se ajuste perfeitamente ao elemento, independentemente do tamanho ou proporção original. Por exemplo, se você tiver uma imagem quadrada e quiser exibi-la em um elemento retangular, o object-fit: cover fará com que a imagem seja redimensionada para preencher todo o espaço retangular, mantendo a proporção original.
+  
+  Lembre-se de que o object-fit: cover só funciona em elementos que têm uma dimensão definida, como uma largura e altura específicas. Se o elemento não tiver uma dimensão definida, a propriedade não terá efeito. */
+
+  position: absolute; /* absolute: Com position: absolute, você pode posicionar um elemento em relação ao seu ancestral mais próximo que tenha uma posição diferente de static. Você também pode usar as propriedades top, right, bottom e left para ajustar a posição do elemento em relação ao seu ancestral. 
+  
+  -- Vídeo a respeito do position: https://www.youtube.com/watch?v=px5Q6Pozt0Y&t=1075s&ab_channel=OneBitCode*/
+
+  top: 0; /* Posiciona manualmente o elemento (position) */
+
+  height: 100vh; /* Quando você usa vh em uma propriedade CSS, você está definindo o tamanho com base em uma porcentagem da altura da janela do navegador, independentemente do tamanho da tela.*/
+
+  width: 100%; /* Quando você define width: 100%;, você está dizendo que quer que o elemento ocupe toda a largura disponível dentro do seu contêiner pai. */
+
+  z-index: -10; /* Ah, o z-index no CSS! É uma propriedade interessante que permite controlar a ordem de empilhamento dos elementos em uma página.
+
+  O z-index é usado para definir a posição de um elemento em relação a outros elementos na mesma área da página. Ele aceita valores numéricos, onde um valor maior indica que o elemento está em um nível superior na pilha.
+  
+  Por exemplo, se você definir z-index: 1 em um elemento e z-index: 2 em outro elemento, o elemento com z-index: 2 ficará acima do elemento com z-index: 1.
+  
+  No entanto, é importante lembrar que o z-index só funciona em elementos que possuem uma posição definida, como position: relative, position: absolute ou position: fixed. Além disso, o z-index só afeta elementos que estão no mesmo contexto de empilhamento, ou seja, elementos irmãos dentro do mesmo elemento pai.
+  
+  É sempre bom ter cuidado ao usar o z-index, pois um uso excessivo ou inadequado pode levar a problemas de sobreposição e tornar a página confusa para os usuários. */
+}
+
+.hero__foreground {
+  color: var(--color-white);
+  padding-top: 40vh; /* Espaçamento proporcional a altura total da tela na <section class="hero"> */
+  text-align: center;
+}
+
+.hero__title {
+  font-size: 5rem; /* Define o tamanho da fonte de um elemento.*/
+  font-weight: 300; /* Permite definir a espessura da fonte de um elemento. */
+}
+
+.hero__text {
+  margin-top: 2rem; /* Margem no topo com relação ao elemento anterior: .hero__title {} */
+  letter-spacing: 0.5rem; /* Espaçamento entre as letras */
+  /* 1rem = 16px;  0.5rem = 8px */
+
+  text-transform: uppercase; /* text-transform: uppercase; -  Essa propriedade é útil quando você deseja aplicar um estilo consistente de letras maiúsculas em seu texto, independentemente de como ele foi digitado originalmente. */
+}
+
+/* Projeto prático: Site Completo com HTML e CSS - Parte 2 */
+
+.section {
+  overflow: hidden; /* Ah, o overflow: hidden no CSS! Essa propriedade é usada para controlar o comportamento de conteúdo que excede o tamanho do seu contêiner.
+
+  Quando você define overflow: hidden para um elemento, qualquer conteúdo que ultrapasse os limites do contêiner será ocultado. Isso pode ser útil quando você deseja recortar ou esconder parte do conteúdo que não deve ser exibido.
+  
+  No entanto, é importante ter cuidado ao usar essa propriedade, pois ela pode causar a perda de conteúdo que ultrapassa os limites do contêiner. Além disso, o overflow: hidden também pode afetar o layout e o posicionamento de outros elementos.*/
+  padding: 0 8rem; /* Vertical / Horizontal */
+  text-align: center;
+}
+
+.section__title {
+  font-size: 3rem; /*Define o tamanho da fonte. 
+  Ao usar o rem, você define o tamanho de um elemento com base no tamanho da fonte do elemento raiz (normalmente o <html>). Isso permite criar um design responsivo, onde o tamanho dos elementos se ajusta automaticamente com base no tamanho da fonte raiz.*/
+  font-weight: 300; /* Espessura da fonte. Quanto maior o valor, mais negrito será o texto. */
+  margin: 4rem auto; /* Altura / Margens laterais (auto = Centralizado). */
+}
+
+.section__img,
+.section__img-inline {
+  border-radius: 0.75rem; /* Borda das imagens */
+  /* eixo x, eixo y, blur (efeito de embaçar a sombra), expansão/recuo, cor */
+  box-shadow: 0 1rem 2rem -0.5rem rgba(20, 116, 180, 0.25);
+  object-fit: cover; /* Quando você define object-fit: cover para um elemento, ele redimensiona a imagem ou vídeo para preencher completamente o espaço disponível, mantendo a proporção original. Isso significa que a imagem ou vídeo será dimensionado para cobrir todo o elemento, podendo cortar partes da imagem se necessário. */
+  object-position: top; /* Ah, o object-position: top no CSS! Essa propriedade permite controlar a posição vertical de uma imagem ou vídeo dentro de um elemento.
+
+  Quando você define object-position: top, a imagem ou vídeo será alinhado ao topo do elemento. Isso significa que a parte superior da imagem ou vídeo será exibida, enquanto o restante pode ficar oculto, dependendo do tamanho do elemento.
+  
+  Por exemplo, se você tiver o seguinte código CSS:
+  
+  img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    object-position: top;
+  }
+  E o seguinte código HTML:
+  
+  <img src="imagem.jpg" alt="Imagem" />
+  A imagem será redimensionada para preencher completamente o elemento <img> de tamanho 300x200 pixels, mas apenas a parte superior da imagem será visível. O restante da imagem será cortado.
+  
+  Essa propriedade é útil quando você deseja exibir apenas uma parte específica da imagem, como o rosto de uma pessoa ou um objeto importante. Você pode ajustar a posição vertical conforme necessário, usando valores como top, bottom ou center.
+  
+  Lembre-se de que a propriedade object-position só funciona em conjunto com object-fit, que define como a imagem ou vídeo é redimensionado. Portanto, certifique-se de usar ambas as propriedades juntas, se necessário.*/
+  position: relative; /* relative: Com position: relative, você pode posicionar um elemento em relação à sua posição normal. Você pode usar as propriedades top, right, bottom e left para ajustar a posição do elemento em relação à sua posição normal.*/
+  max-height: 30rem; /*Altura Máxima*/
+  width: 100%; /* Nesse caso ocupará 100% da largura da section*/
+}
+
+.section__text,
+.section__text-inline {
+  font-size: 1.25rem;
+  line-height: 1.75;
+  margin: 4rem auto; /* Altura / Margens laterais (auto = Centralizado). */
+}
+
+.section__img-inline {
+  border-top-left-radius: 4rem;
+  border-bottom-right-radius: 4rem;
+  float: left; /* Ah, o float no CSS! Uma propriedade clássica que permite posicionar elementos de forma flutuante em relação ao seu contêiner.
+
+  Quando você define float: left para um elemento, ele será posicionado à esquerda do contêiner e o restante do conteúdo fluirá ao redor dele. Da mesma forma, float: right posiciona o elemento à direita.
+  
+  Essa técnica era amplamente utilizada para criar layouts de várias colunas antes do surgimento do flexbox e do grid. No entanto, o uso excessivo de float pode causar problemas de layout e dificultar a manutenção do código.
+  
+  É importante lembrar que, ao usar float, você pode precisar lidar com o "clearfix" para evitar que elementos subsequentes sejam afetados pela flutuação.
+  
+  Atualmente, recomenda-se o uso de flexbox ou grid para criar layouts mais flexíveis e responsivos. Essas abordagens oferecem mais controle sobre o posicionamento dos elementos e evitam alguns dos problemas associados ao float. */
+  margin-right: 4rem;
+  margin-bottom: 2rem;
+  height: 25rem;
+  width: 20rem;
+}
+
+.section__text-inline {
+  margin-top: 6rem;
+  text-align: left;
+}
+
+.section__text-inline > p {
+  margin-top: 1.5rem;
+}
+
+#hangouts img {
+  object-position: center;
+}
+
+.gallery__img {
+  border-radius: 0.75rem; /* Mesmo valor das sections anteriores / padrão */
+  height: 16rem;
+  width: 16rem;
+  object-fit: cover; /* Para cobrir toda a área do nosso elemento */
+  transform: rotate(-2deg);
+}
+/* deg = degrees (graus) */
+/* As imagens vão ficar levemente inclinadas*/
+
+/* Quando você usa transform: rotate() e especifica um ângulo, o elemento será girado em relação ao seu ponto de transformação. O ângulo pode ser definido em graus (deg), radianos (rad) ou turnos (turn).
+
+Por exemplo, se você usar transform: rotate(45deg), o elemento será girado em 45 graus no sentido horário. Se você usar um valor negativo, como transform: rotate(-90deg), o elemento será girado em 90 graus no sentido anti-horário.
+
+Essa propriedade de transformação é muito útil para criar efeitos visuais interessantes, como animações de rotação ou ajustes de posicionamento. */
+
+.gallery__img-wrapper {
+  display: inline-block; /*mantém as vantagens do block mas sem quebrar de linha. */
+  position: relative;
+}
+
+.gallery__img-wrapper + .gallery__img-wrapper {
+  margin-left: 3rem;
+  margin-top: 3rem;
+}
+/* Quando você usa o seletor +, você está selecionando o elemento irmão imediatamente seguinte a um outro elemento específico.
+O seletor + é útil quando você deseja aplicar estilos específicos a elementos que estão em uma determinada ordem na estrutura do HTML.
+Ou seja, nesse caso o seletor + foi usado para aplicar o mesmo estilo aos elementos que vem "depois do primeiro" que  estão acompanhados de outro. */
+
+.gallery__img-wrapper:nth-child(even) > .gallery__img {
+  top: 1rem; /* Empurrando 1rem no topo dessas imagens mas para funcionar é preciso utilizar a propriedade position no 
+  
+  element class= (Localizado Acima).
+  
+  .gallery__img-wrapper {
+    display: inline-block;
+    position: relative;
+  }*/
+  transform: rotate(2deg);
+}
+
+/* Esse código CSS acima está selecionando os elementos com a classe "gallery__img" que são filhos pares (even) do elemento com a classe "gallery__img-wrapper".
+
+Em seguida, ele aplica uma transformação de rotação de 2 graus nesses elementos selecionados.
+
+Basicamente, ele está girando levemente as imagens que estão em posições pares dentro do wrapper da galeria ou seja, dessa vez o inverso do que foi feito anteriormente na class .gallery__img {} */
+
+/* -------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* Pseudo elemento::after */
+/* O pseudo-elemento ::after no CSS! É um dos pseudo-elementos mais utilizados.
+
+O ::after é usado para adicionar conteúdo após o conteúdo de um elemento selecionado. Ele cria um elemento virtual que é inserido após o conteúdo do elemento selecionado.
+
+Por exemplo, se você tiver o seguinte código HTML:
+
+<div class="box">Hello</div>
+E quiser adicionar um elemento após o conteúdo da div com a classe "box", você pode usar o pseudo-elemento ::after da seguinte forma:
+
+.box::after {
+  content: " World";
+}
+Dessa forma, o texto " World" será adicionado após o conteúdo da div, resultando em "Hello World".
+
+O ::after é muito útil para adicionar elementos decorativos, como setas, ícones ou até mesmo para criar efeitos visuais. */
+
+.gallery__img-wrapper::after {
+  content: ""; /* Nesse caso o elemento está "vazio" contendo apenas a cor definida abaixo*/
+  background-color: rgb(228, 26, 26);
+  border-radius: 999px; /* O pseudo elemento criado ficará redondo por conta do valor alto inserido na borda.*/
+  display: block; /* para conseguir visualizar o pseudo elemento pois, ele quebrou de linha.*/
+  height: 1.25rem;
+  width: 1.25rem;
+  position: absolute; /* Faz com que o elemento aqui seja posicionado de forma manual porém, relativo a:
+   .gallery__img-wrapper {} */
+  top: 0.25rem;
+  right: 1rem;
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------------ */
+
+/* O código a seguir está selecionando os elementos com a classe .gallery__img-wrapper que são filhos pares (even) de seu elemento pai e adicionando um pseudo-elemento ::after a eles.
+
+Em seguida, ele define a propriedade left do pseudo-elemento como 1rem, o que significa que o pseudo-elemento será posicionado 1rem à esquerda em relação ao seu elemento pai.
+
+Isso pode ser útil para criar um efeito visual específico em elementos pares dentro de uma galeria de imagens, por exemplo.*/
+
+.gallery__img-wrapper:nth-child(even)::after {
+  left: 1rem;
+}
+
+/* 5- Rodapé */
+
+.footer {
+  margin-top: 4rem;
+  padding: 2rem;
+  text-align: center;
+}
